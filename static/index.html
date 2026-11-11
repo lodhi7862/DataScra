@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JewelLeads</title>
+  <meta name="description" content="Find jewellery shops and keep their contact details on your own computer.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b45309'/%3E%3Cpath d='M32 12 46 26 32 52 18 26Z' fill='%23fffbeb'/%3E%3Cpath d='M18 26h28L32 18Z' fill='%23fde68a'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"] },
+        },
+      },
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script>
+    if (localStorage.getItem("jewelleads-theme") === "dark") {
+      document.documentElement.classList.add("dark");
+    }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="app-shell">
+    <aside id="sidebar" class="sidebar" aria-label="Primary">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="22" height="22"><path d="M16 3 26 12 16 29 6 12Z" fill="currentColor"/><path d="M6 12h20L16 7Z" fill="#fff" opacity=".85"/></svg>
+        </span>
+        <span>
+          <strong>JewelLeads</strong>
+          <small>Local shop leads</small>
+        </span>
+      </div>
+      <nav class="nav" id="nav">
+        <button type="button" class="nav-link" data-nav="dashboard">Dashboard</button>
+        <button type="button" class="nav-link" data-nav="search">Find Shops</button>
+        <button type="button" class="nav-link" data-nav="leads">My Leads</button>
+        <button type="button" class="nav-link" data-nav="import">Import</button>
+        <button type="button" class="nav-link" data-nav="settings">Settings</button>
+      </nav>
+      <p class="sidebar-note">Runs on this computer. OpenStreetMap data, no paid API.</p>
+    </aside>
+    <div id="backdrop" class="backdrop" hidden></div>
+    <div class="main-column">
+      <header class="topbar">
+        <button type="button" class="btn btn-ghost icon-btn menu-btn" data-action="menu" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <div class="topbar-title">
+          <strong id="top-title">JewelLeads</strong>
+        </div>
+        <button type="button" class="btn btn-ghost" id="theme-toggle" data-action="theme" aria-pressed="false">Dark mode</button>
+        <button type="button" class="btn btn-ghost" data-action="logout">Log out</button>
+      </header>
+      <main id="main" class="page" tabindex="-1"></main>
+    </div>
+  </div>
+  <div id="bulk-root"></div>
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+  <div id="drawer-root"></div>
+  <div id="modal-root" hidden></div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
